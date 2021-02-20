@@ -1,0 +1,43 @@
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+    font-size: 18x;
+    color: black;
+}
+#currentTime{
+    display: inline-block;
+    float: right;
+}
+.highscoreNav{
+    font-size: 18x;
+    color: black;
+}
+main{
+    text-align: center;
+    padding: 100px;
+    margin-right: 200px;
+    margin-left: 200px;
+}
+main p{
+    font-size: 18px;
+}
+.start{
+    padding: 10px 20px 10px 20px;
+    background-color: lightgrey;
+    color: black;
+    font-weight: bold;
+}
+
+#questionsDiv {
+    margin: 20px;
+}
+#questionsDiv li{
+    margin-top: 10px;
+    padding: 5px 15px;
+    width: 80%;
+    font-size: 18px;
+    color: black;
+    list-style: none;
+    border: black solid 1px;
+}
