@@ -10,31 +10,21 @@ This is a project to test our HTML/CSS/JS/WebAPI abilities. The goal is to build
 
 ## Installation
 
-View my project at: 
+View my project at: https://mschall217.github.io/code-quiz/
 
 ## Usage
 
-Replace the contents of `README.md` with your project's:
-
-- Name
-- Description
-- Installation instructions
-- Usage instructions
-- Support instructions
-- Contributing instructions
-- Licence
-
-Feel free to remove any sections that aren't applicable to your project.
+The game works when the user clicks start they are prompted with 5 random questions about coding! This is timed to see how well you can do, every wrong answer subtracts 10 from your time. The highest score wins! 
 
 
 ## Screenshot
 
-![]()
+![screenshot](/images/screenshot)
 
 ## Support
 
-Please [open an issue](https://github.com/fraction/readme-boilerplate/issues/new) for support.
+Please [open an issue](https://github.com/mschall217/code-quiz/issues) for support.
 
 ## Contributing
 
-Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/fraction/readme-boilerplate/compare/).
+I got a lot of ideas and help from classmates chat, tutoring, and TA's
