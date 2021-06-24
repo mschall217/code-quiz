@@ -66,13 +66,13 @@ const game = () => {
     }
     let questionEL = '<h3>' + questions[currentQ].title + '</h3>' 
 
-    for (var buttonLoop = 0; buttonLoop < questions[currentQ].choices.length; buttonLoop++) {
-        var buttonCode = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
-        buttonCode = buttonCode.replace("[CHOICE]", questions[currentQ].choices[buttonLoop]);
-        if (questions[currentQ].choices[buttonLoop] == questions[currentQ].answer) {
-            buttonCode = buttonCode.replace("[ANS]", "correct()");
+    for (var i = 0; i < questions[currentQ].choices.length; i++) {
+        var buttonEl = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
+        buttonEl = buttonEl.replace("[CHOICE]", questions[currentQ].choices[i]);
+        if (questions[currentQ].choices[i] == questions[currentQ].answer) {
+            buttonEl = buttonEl.replace("[ANS]", "correct()");
         } else {
-            buttonCode = buttonCode.replace("[ANS]", "incorrect()");
+            buttonEl = buttonEl.replace("[ANS]", "incorrect()");
         }
         questionEL += buttonCode
     }
