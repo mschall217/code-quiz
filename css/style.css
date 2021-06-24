@@ -5,8 +5,7 @@ header{
     font-size: 18x;
     color: black;
 }
-#currentTime{
-    display: inline-block;
+.time-div{
     float: right;
 }
 .highscoreNav{

@@ -52,3 +52,15 @@ var questions = [
 ]
 
 
+let score = 0
+let currentQ = -1
+let time;
+let timer;
+
+const startQuiz = () =>{
+    let time = 75;
+    document.querySelector('#currentTime').innerHTML = time
+
+}
+
+startQuiz();
