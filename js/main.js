@@ -187,12 +187,18 @@ const endGame = () => {
                     initials: initials,
                     score: time
                 }
+                //if a zero is received no score recorded
+                if(time < 0){
+                    score == 0;
+                }
                 var totalScores = localStorage.getItem("totalScores");
                 if (totalScores === null) {
                     totalScores = [];
                 } else {
                     totalScores = JSON.parse(totalScores);
                 }
+
+                //add users score to code quiz results 
                 totalScores.push(finalScore);
                 var newScore = JSON.stringify(totalScores);
                 localStorage.setItem("totalScores", newScore);

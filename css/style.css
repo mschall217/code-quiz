@@ -27,6 +27,18 @@ main p{
     color: black;
     font-weight: bold;
 }
+#backBtn{
+    padding: 10px 20px 10px 20px;
+    background-color: lightgrey;
+    color: black;
+    font-weight: bold;
+}
+#clearBtn{
+    padding: 10px 20px 10px 20px;
+    background-color: lightgrey;
+    color: black;
+    font-weight: bold;
+}
 
 #questionsDiv {
     margin: 20px;
