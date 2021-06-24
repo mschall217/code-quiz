@@ -57,9 +57,22 @@ let currentQ = -1
 let time;
 let timer;
 
+
 const startQuiz = () =>{
-    let time = 75;
+    let time = 10;
     document.querySelector('#currentTime').innerHTML = time
+    //sets timer on the main page to reflect the start time 75 seconds
+    timer = setInterval(()=>{
+        time--;
+        document.querySelector('#currentTime').innerHTML = time
+        //as time decreased it changes the HTML 
+        if(time <=0){
+            clearInterval(timer);
+            //stops the timer at 0 
+            return;
+            //function to end the game will go here. 
+        }
+    }, 1000)
 
 }
 
