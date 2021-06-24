@@ -57,6 +57,19 @@ let currentQ = -1
 let time;
 let timer;
 
+//adds 20 points to the score for every right 
+const correct = () => {
+    score += 20;
+    game();
+}
+
+//subtracts 10 seconds from the time for every wrong answer 
+const incorrect = () => {
+    time -= 10;
+    game();
+}
+
+
 const game = () => {
     currentQ++;
     //if current question being displayed is the last one then end the game
@@ -74,7 +87,7 @@ const game = () => {
         } else {
             buttonEl = buttonEl.replace("[ANS]", "incorrect()");
         }
-        questionEL += buttonCode
+        questionEL += buttonEl
     }
 
 
