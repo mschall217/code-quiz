@@ -1,38 +1,46 @@
 *{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+
 header{
     font-size: 18x;
     color: black;
 }
+
 .time-div{
     float: right;
 }
+
 .highscoreNav{
     font-size: 18x;
     color: black;
 }
+
 main{
     text-align: center;
     padding: 100px;
     margin-right: 200px;
     margin-left: 200px;
 }
+
 main p{
     font-size: 18px;
 }
+
 .start{
     padding: 10px 20px 10px 20px;
     background-color: lightgrey;
     color: black;
     font-weight: bold;
 }
+
 #backBtn{
     padding: 10px 20px 10px 20px;
     background-color: lightgrey;
     color: black;
     font-weight: bold;
 }
+
 #clearBtn{
     padding: 10px 20px 10px 20px;
     background-color: lightgrey;
@@ -43,6 +51,7 @@ main p{
 #questionsDiv {
     margin: 20px;
 }
+
 #questionsDiv li{
     margin-top: 10px;
     padding: 5px 15px;

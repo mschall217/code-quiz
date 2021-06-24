@@ -135,13 +135,11 @@ const endGame = () => {
     current.innerHTML = ''
 
         let finishedTitle = document.createElement("h2");
-        finishedTitle.setAttribute("id", "finishedTitle");
         finishedTitle.textContent = "Congrats!"
         questionsDiv.appendChild(finishedTitle);
     
         // Paragraph
         var setFinal = document.createElement("p");
-        setFinal.setAttribute("id", "setFinal");
     
         questionsDiv.appendChild(setFinal);
     
@@ -156,21 +154,18 @@ const endGame = () => {
         }
     
         let initialsTitle = document.createElement("label");
-        initialsTitle.setAttribute("id", "initialsTitle");
         initialsTitle.textContent = "Enter your initials: ";
     
         questionsDiv.appendChild(initialsTitle);
     
         var initalsEl = document.createElement("input");
         initalsEl.setAttribute("type", "text");
-        initalsEl.setAttribute("id", "initalsEl");
         initalsEl.textContent = "";
     
         questionsDiv.appendChild(initalsEl);
     
         var submitEl = document.createElement("button");
         submitEl.setAttribute("type", "submit");
-        submitEl.setAttribute("id", "Submit");
         submitEl.textContent = "Submit";
     
         questionsDiv.appendChild(submitEl);
