@@ -1,3 +1,4 @@
+///initializing an array with objects containing questions, answerss, and choices
 var questions = [
     {
         title: "Commonly used data types DO NOT include:",
@@ -52,71 +53,152 @@ var questions = [
 ]
 
 
-let score = 0
-let currentQ = -1
-let time;
-let timer;
+let score = 0;
+let currentQ = 0;
+let time = 75;
+let hold = 0;
+let penalty = 15;
 
-//adds 20 points to the score for every right 
-const correct = () => {
-    score += 20;
-    game();
-}
-
-//subtracts 10 seconds from the time for every wrong answer 
-const incorrect = () => {
-    time -= 10;
-    game();
-}
+let wrapper = document.querySelector('#wrapper');
+let questionsDiv = document.querySelector('#questionsDiv');
+let current = document.querySelector('#currentTime');
+let timer = document.querySelector('.start');
 
 
-const game = () => {
-    currentQ++;
-    //if current question being displayed is the last one then end the game
-    if(currentQ > questions.length -1){
-        // function to end the game 
-        return;
+timer.addEventListener('click', () =>{
+    if(hold == 0){
+        hold = setInterval(() => {
+            time--;
+            current.textContent = time;
+
+            if(time <= 0){
+                clearInterval(hold);
+                endGame()
+                current.textContent = 'Time is up!'
+            }
+        }, 1000)
     }
-    let questionEL = '<h3>' + questions[currentQ].title + '</h3>' 
+    render(currentQ)
+})
 
-    for (var i = 0; i < questions[currentQ].choices.length; i++) {
-        var buttonEl = "<button onclick=\"[ANS]\">[CHOICE]</button>"; 
-        buttonEl = buttonEl.replace("[CHOICE]", questions[currentQ].choices[i]);
-        if (questions[currentQ].choices[i] == questions[currentQ].answer) {
-            buttonEl = buttonEl.replace("[ANS]", "correct()");
+let choiceCreate = document.createElement("ul")
+
+function render(currentQ) {
+    questionsDiv.innerHTML = "";
+    choiceCreate.innerHTML = "";
+
+
+    for (let i = 0; i < questions.length; i++) {
+        var questionTitle = questions[currentQ].title;
+        var questionChoice = questions[currentQ].choices;
+        questionsDiv.textContent = questionTitle;
+    }
+    questionChoice.forEach((element) => {
+        let listEl = document.createElement("li");
+        listEl.textContent = element;
+        questionsDiv.appendChild(choiceCreate);
+        choiceCreate.appendChild(listEl);
+        listEl.addEventListener("click", (check));
+    })
+}
+
+function check(event) {
+    let e = event.target;
+
+    if (e.matches("li")) {
+
+        var newDiv = document.createElement("div");
+        newDiv.setAttribute("id", "newDiv");
+        if (e.textContent == questions[currentQ].answer) {
+            score++;
+            newDiv.textContent = "Correct!";
         } else {
-            buttonEl = buttonEl.replace("[ANS]", "incorrect()");
+            time = time - penalty;
+            newDiv.textContent = "Wrong!";
         }
-        questionEL += buttonEl
+
     }
+    currentQ++;
 
-
-    document.querySelector('#questionsDiv').innerHTML = questionEL
+    if (currentQ >= questions.length) {
+        endGame();
+        newDiv.textContent = "End of quiz!" + " " + "Score: " + score + "/" + (questions.length*20);
+    } else {
+        render(currentQ);
+    }
+    questionsDiv.appendChild(newDiv);
 
 }
 
-const startQuiz = () =>{
-    let time = 10;
-    document.querySelector('#currentTime').innerHTML = time
-    //sets timer on the main page to reflect the start time 75 seconds
-    timer = setInterval(()=>{
-        time--;
-        document.querySelector('#currentTime').innerHTML = time
-        //as time decreased it changes the HTML 
-        if(time <=0){
-            clearInterval(timer);
-            //stops the timer at 0 
-            return;
-            //function to end the game will go here. 
-        }
-    }, 1000)
+const endGame = () => {
+    questionsDiv.innerHTML = ''
+    current.innerHTML = ''
+
+        let finishedTitle = document.createElement("h2");
+        finishedTitle.setAttribute("id", "finishedTitle");
+        finishedTitle.textContent = "Congrats!"
+        questionsDiv.appendChild(finishedTitle);
     
-    game();
+        // Paragraph
+        var setFinal = document.createElement("p");
+        setFinal.setAttribute("id", "setFinal");
+    
+        questionsDiv.appendChild(setFinal);
+    
+        // Calculates time remaining and replaces it with score
+        if (time >= 0) {
+            let timeRemaining = time;
+            let createP = document.createElement("p");
+            clearInterval(hold);
+            setFinal.textContent = "Your final score is: " + timeRemaining;
+    
+            questionsDiv.appendChild(createP);
+        }
+    
+        let initialsTitle = document.createElement("label");
+        initialsTitle.setAttribute("id", "initialsTitle");
+        initialsTitle.textContent = "Enter your initials: ";
+    
+        questionsDiv.appendChild(initialsTitle);
+    
+        var initalsEl = document.createElement("input");
+        initalsEl.setAttribute("type", "text");
+        initalsEl.setAttribute("id", "initalsEl");
+        initalsEl.textContent = "";
+    
+        questionsDiv.appendChild(initalsEl);
+    
+        var submitEl = document.createElement("button");
+        submitEl.setAttribute("type", "submit");
+        submitEl.setAttribute("id", "Submit");
+        submitEl.textContent = "Submit";
+    
+        questionsDiv.appendChild(submitEl);
+    
+        submitEl.addEventListener("click",() => {
+            let initials = initalsEl.value;
+    
+            if (initials === null) {
+    
+                alert('Please enter your intials!');
+    
+            } else {
+                let finalScore = {
+                    initials: initials,
+                    score: time
+                }
+                var totalScores = localStorage.getItem("totalScores");
+                if (totalScores === null) {
+                    totalScores = [];
+                } else {
+                    totalScores = JSON.parse(totalScores);
+                }
+                totalScores.push(finalScore);
+                var newScore = JSON.stringify(totalScores);
+                localStorage.setItem("totalScores", newScore);
+                window.location.replace("./HighScores.html");
+            }
+        });
 
 }
-
-const startBtn = document.querySelector(".start")
-startBtn.addEventListener("click", startQuiz())
-
-
 

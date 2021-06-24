@@ -9,16 +9,18 @@
 <body>
     <header>
         <a href="highscores.html" class="highscoreNav">View Highscores</a>
-            <!-- Div for timer -->
             <div class="time-div">Time Left:<span id="currentTime"></span></div>
     </header>
-    <main id="start">
-        <h1>Coding Quiz Challenge!</h1>
-        <p class="instructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!</p>
-        <button class="start">Start Quiz</button>
-    </main>
-     <div id="questionsDiv"></div>
-     
+    <div class="wrapper">
+     <div id="questionsDiv">
+        <main>
+            <h1>Coding Quiz Challenge!</h1>
+            <p class="instructions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 15 seconds!</p>
+            <ul id="choices"></ul>
+            <button class="start">Start Quiz</button>
+        </main>
+     </div>
+    </div>
     <script src="js/main.js"></script>
 </body>
 </html>
