@@ -76,4 +76,19 @@ const startQuiz = () =>{
 
 }
 
-startQuiz();
+
+const game = () => {
+    currentQ++;
+    //if current question being displayed is the last one then end the game
+    if(currentQ > questions.length -1){
+        // function to end the game 
+        return;
+    }
+    let questionEL = '<h3>' + questions[currentQ].title + '</h3>' 
+
+
+    document.querySelector('#questionsDiv').innerHTML = questionEL
+
+}
+
+game();
